@@ -18,7 +18,7 @@ dependencies:
        url: https://github.com/Miko2x/tflite_flutter_plugin.git
        ref: master
   tuple: ^2.0.0
-  camera: ^0.9.4+19
+  camera: ^0.10.5+9
   ffi: ^2.0.1
   image: ^3.0.2
 dev_dependencies:
