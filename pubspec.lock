@@ -292,7 +292,6 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "6f4f46d7d4ce278548bd71695eb1f8351bfa62a9"
       url: "https://github.com/doArtlab/tflite_flutter_plugin.git"
     source: git
     version: "0.9.1"
