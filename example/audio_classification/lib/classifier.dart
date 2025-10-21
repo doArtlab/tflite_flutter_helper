@@ -55,17 +55,13 @@ class Classifier {
   }
 
   List<Category> predict(List<int> audioSample) {
-    final pres = DateTime.now().millisecondsSinceEpoch;
     Uint8List bytes = Uint8List.fromList(audioSample);
     TensorAudio tensorAudio = TensorAudio.create(
         TensorAudioFormat.create(1, sampleRate), _inputShape[0]);
     tensorAudio.loadShortBytes(bytes);
-    final pre = DateTime.now().millisecondsSinceEpoch - pres;
 
-    final runs = DateTime.now().millisecondsSinceEpoch;
     interpreter.run(
         tensorAudio.tensorBuffer.getBuffer(), _outputBuffer.getBuffer());
-    final run = DateTime.now().millisecondsSinceEpoch - runs;
 
     Map<String, double> labeledProb = {};
     for (int i = 0; i < _outputBuffer.getDoubleList().length; i++) {
@@ -84,7 +80,9 @@ List<Category> getTopProbability(Map<String, double> labeledProb) {
   var pq = PriorityQueue<MapEntry<String, double>>(compare);
   pq.addAll(labeledProb.entries);
   var result = <Category>[];
-  while (pq.isNotEmpty && result.length < 5 && (pq.first.value > 0.1 || result.length < 3)) {
+  while (pq.isNotEmpty &&
+      result.length < 5 &&
+      (pq.first.value > 0.1 || result.length < 3)) {
     result.add(Category(pq.first.key, pq.first.value));
     pq.removeFirst();
   }

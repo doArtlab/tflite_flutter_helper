@@ -22,7 +22,6 @@ class _MyAppState extends State<MyApp> {
   bool inputState = true;
 
   List<int> _micChunks = [];
-  bool _isRecording = false;
   late StreamSubscription _recorderStatus;
   late StreamSubscription _audioStream;
 
@@ -58,10 +57,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> initPlugin() async {
     _recorderStatus = _recorder.status.listen((status) {
-      if (mounted)
-        setState(() {
-          _isRecording = status == SoundStreamStatus.Playing;
-        });
+      // Stream status listener
     });
 
     _audioStream = _recorder.audioStream.listen((data) {
@@ -83,7 +79,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.orange, accentColor: Colors.orange),
+      theme: ThemeData(
+        primaryColor: Colors.orange,
+        colorScheme:
+            ColorScheme.fromSwatch().copyWith(secondary: Colors.orange),
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(

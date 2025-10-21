@@ -3,7 +3,6 @@ import 'package:bert_question_answer/data/qa_data.dart';
 import 'package:bert_question_answer/ui/question_answerer_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:random_color/random_color.dart';
 
 class ArticleListPage extends StatelessWidget {
   @override

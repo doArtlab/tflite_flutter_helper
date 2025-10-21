@@ -15,7 +15,6 @@ abstract class ClassiferTest extends Classifier {
   // Copying loadString method here as it wasn't probably working bec
   Future<String> loadString(String key, {bool cache = true}) async {
     final ByteData data = await rootBundle.load(key);
-    if (data == null) throw FlutterError('Unable to load asset: $key');
     return utf8.decode(data.buffer.asUint8List());
   }
 }
