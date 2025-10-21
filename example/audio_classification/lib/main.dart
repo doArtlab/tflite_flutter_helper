@@ -83,7 +83,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.orange, accentColor: Colors.orange),
+      theme: ThemeData(
+        primaryColor: Colors.orange,
+        colorScheme:
+            ColorScheme.fromSwatch().copyWith(secondary: Colors.orange),
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
